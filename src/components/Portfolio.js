@@ -140,7 +140,7 @@ const Contact = () => (
 );
 
 const Portfolio = () => {
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState('about'); // Cambiado de 'hero' a 'about'
   const [isLoading, setIsLoading] = useState(true);
   const [imageLoadedStates, setImageLoadedStates] = useState({});
 
@@ -190,7 +190,7 @@ const Portfolio = () => {
   };
 
   const renderProjects = () => (
-    <section className="py-12 px-6 bg-white">
+    <section className="min-h-[calc(100vh-theme(spacing.16)-theme(spacing.20))] py-12 px-6 bg-white">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Featured Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -243,6 +243,27 @@ const Portfolio = () => {
   );
 
   const renderContent = () => {
+    const heroContent = (
+      <>
+        <section className="pt-24 pb-12 px-6">
+          <div className="container mx-auto text-center">
+            {isLoading ? (
+              <div className="animate-pulse">
+                <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
+              </div>
+            ) : (
+              <>
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">{aiContent.tagline}</h1>
+                <p className="text-xl text-gray-600 mb-8">{aiContent.description}</p>
+              </>
+            )}
+          </div>
+        </section>
+        {renderProjects()}
+      </>
+    );
+
     switch(activeSection) {
       case 'about':
         return <About />;
@@ -252,41 +273,33 @@ const Portfolio = () => {
         return <Skills />;
       case 'contact':
         return <Contact />;
+      case 'hero':
+        return heroContent;
       default:
-        return (
-          <>
-            <section className="pt-24 pb-12 px-6">
-              <div className="container mx-auto text-center">
-                {isLoading ? (
-                  <div className="animate-pulse">
-                    <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
-                    <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
-                  </div>
-                ) : (
-                  <>
-                    <h1 className="text-4xl font-bold text-gray-900 mb-4">{aiContent.tagline}</h1>
-                    <p className="text-xl text-gray-600 mb-8">{aiContent.description}</p>
-                  </>
-                )}
-              </div>
-            </section>
-            {renderProjects()}
-          </>
-        );
+        return heroContent;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 pt-16">
       <nav className="fixed top-0 w-full bg-white shadow-sm z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-xl font-bold text-gray-800">Welcome to my Portfolio</div>
+            <div 
+              className="text-xl font-bold text-gray-800 cursor-pointer" 
+              onClick={() => setActiveSection('hero')}
+            >
+              Welcome to my Portfolio
+            </div>
             <div className="flex space-x-6">
               {['About', 'Projects', 'Skills', 'Contact'].map((item) => (
                 <button
                   key={item}
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className={`px-3 py-1 rounded-md transition-colors ${
+                    activeSection === item.toLowerCase()
+                      ? 'bg-blue-100 text-blue-800'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
                   onClick={() => setActiveSection(item.toLowerCase())}
                 >
                   {item}
