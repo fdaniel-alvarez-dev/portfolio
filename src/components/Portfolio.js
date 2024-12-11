@@ -17,21 +17,21 @@ const Portfolio = () => {
       description: "A minimalist e-commerce MVP that proves simplicity is the ultimate sophistication...",
       tags: ["React", "Tailwind", "JavaScript"],
       // Imagen local con path relativo al dominio de GitHub Pages
-      image: "../../images/ecommerce.jpeg",
+      image: "../images/ecommerce.jpeg",
       link: "https://fdaniel-alvarez-dev.github.io/ecommerce/"
     },
     {
       title: "Smart Portfolio Generator",
       description: "A minimalist Portfolio website generator for creatives MVP",
       tags: ["Next.js", "Machine Learning", "Design"],
-      image: "../../images/portfolio.webp",
+      image: "../images/portfolio.webp",
       link: "https://fdaniel-alvarez-dev.github.io/portfolio-generator/"
     },
     {
       title: "Design System Creator",
       description: "A minimalist Automated design system generation MVP",
       tags: ["Design Systems", "AI", "Components"],
-      image: "../../images/system_design.webp",
+      image: "../images/system_design.webp",
       link: "https://fdaniel-alvarez-dev.github.io/design-system-creator/"
     }
   ];
