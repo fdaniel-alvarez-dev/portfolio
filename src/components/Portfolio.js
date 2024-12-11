@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Camera, Code, Layout, Palette, Send, Github, Linkedin, Mail, Phone, Database, Server } from 'lucide-react';
-import { initGA, logPageView, logEvent } from '../utils/analytics';
-
+import { initGA, logPageView, logEvent, logSectionView, logProjectClick } from '../utils/analytics';
 const About = () => (
   <section className="py-16 bg-white">
     <div className="container mx-auto px-6">
