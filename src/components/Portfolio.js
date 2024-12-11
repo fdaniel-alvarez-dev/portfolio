@@ -7,8 +7,8 @@ const Portfolio = () => {
 
   // Simulated AI-generated content
   const aiContent = {
-    tagline: "Where Human Creativity Meets Artificial Intelligence",
-    description: "Crafting digital experiences through the perfect blend of human-centered design and AI innovation"
+    tagline: "Full Stack Developer & Solutions Architect",
+    description: "Building scalable end-to-end solutions with React, Vue.js, Flask and containerized microservices. Transforming complex requirements into elegant, production-ready applications."
   };
 
   // Project data
