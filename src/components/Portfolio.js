@@ -4,6 +4,7 @@ import { Camera, Code, Layout, Palette, Send, Github, Linkedin, Mail } from 'luc
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isLoading, setIsLoading] = useState(true);
+  const [imageLoadedStates, setImageLoadedStates] = useState({});
 
   const aiContent = {
     tagline: "Full Stack Developer & Solutions Architect",
@@ -15,28 +16,41 @@ const Portfolio = () => {
       title: "EasyMart!, Small scale. Smart shopping",
       description: "A minimalist e-commerce MVP that proves simplicity is the ultimate sophistication. Focused on clean code architecture and intuitive UX/UI design principles.",
       tags: ["React", "Tailwind", "JavaScript"],
-      image: "https://images.unsplash.com/photo-1630569267625-157f8f9d1a7e?w=800&h=400&q=80",
+      image: "https://res.cloudinary.com/dz5fusuqm/image/upload/c_fill,w_800,h_400,q_auto,f_auto/v1/portfolio/ecommerce-dashboard",
       link: "https://fdaniel-alvarez-dev.github.io/ecommerce/"
     },
     {
       title: "Smart Portfolio Generator",
       description: "AI-assisted portfolio website generator for creatives",
       tags: ["Next.js", "Machine Learning", "Design"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&q=80",
+      image: "https://res.cloudinary.com/dz5fusuqm/image/upload/c_fill,w_800,h_400,q_auto,f_auto/v1/portfolio/portfolio-creator",
       link: "https://fdaniel-alvarez-dev.github.io/portfolio-generator/"
     },
     {
       title: "Design System Creator",
       description: "Automated design system generation using AI",
       tags: ["Design Systems", "AI", "Components"],
-      image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&h=400&q=80",
+      image: "https://res.cloudinary.com/dz5fusuqm/image/upload/c_fill,w_800,h_400,q_auto,f_auto/v1/portfolio/design-system",
       link: "https://fdaniel-alvarez-dev.github.io/design-system-creator/"
     }
   ];
 
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 1500);
+    // Inicializar estados de carga de imágenes
+    const initialLoadStates = {};
+    projects.forEach((_, index) => {
+      initialLoadStates[index] = false;
+    });
+    setImageLoadedStates(initialLoadStates);
   }, []);
+
+  const handleImageLoad = (index) => {
+    setImageLoadedStates(prev => ({
+      ...prev,
+      [index]: true
+    }));
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -88,10 +102,22 @@ const Portfolio = () => {
                 className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105"
               >
                 <div className="relative h-48 overflow-hidden">
+                  {!imageLoadedStates[index] && (
+                    <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                  )}
                   <img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    className={`w-full h-full object-cover transition-transform duration-300 hover:scale-110 ${
+                      imageLoadedStates[index] ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    onLoad={() => handleImageLoad(index)}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/portfolio/fallback-image.png';
+                      handleImageLoad(index);
+                    }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">
