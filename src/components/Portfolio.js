@@ -17,21 +17,21 @@ const Portfolio = () => {
       description: "A minimalist e-commerce MVP that proves simplicity is the ultimate sophistication...",
       tags: ["React", "Tailwind", "JavaScript"],
       // Imagen local con path relativo al dominio de GitHub Pages
-      image: "/portfolio/src/components/ecommerce.jpeg",
+      image: process.env.PUBLIC_URL + '/images/ecommerce.jpeg',
       link: "https://fdaniel-alvarez-dev.github.io/ecommerce/"
     },
     {
       title: "Smart Portfolio Generator",
       description: "A minimalist Portfolio website generator for creatives MVP",
       tags: ["Next.js", "Machine Learning", "Design"],
-      image: "/portfolio/src/components/portfolio.webp",
+      image: process.env.PUBLIC_URL + '/images/portfolio.webp',
       link: "https://fdaniel-alvarez-dev.github.io/portfolio-generator/"
     },
     {
       title: "Design System Creator",
       description: "A minimalist Automated design system generation MVP",
       tags: ["Design Systems", "AI", "Components"],
-      image: "/portfolio/src/components/system_design.webp",
+      image: process.env.PUBLIC_URL + '/images/system_design.webp',
       link: "https://fdaniel-alvarez-dev.github.io/design-system-creator/"
     }
   ];
@@ -115,7 +115,8 @@ const Portfolio = () => {
                     onLoad={() => handleImageLoad(index)}
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = '/portfolio/src/components/fallback.jpg';
+                      e.target.src = process.env.PUBLIC_URL + '/images/fallback.jpg';
+                      
                       handleImageLoad(index);
                     }}
                     loading="lazy"
