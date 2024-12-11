@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Camera, Code, Layout, Palette, Send, Github, Linkedin, Mail, Phone, Database, Server } from 'lucide-react';
+import { initGA, logPageView, logEvent } from '../utils/analytics';
 
 const About = () => (
   <section className="py-16 bg-white">
@@ -174,6 +175,8 @@ const Portfolio = () => {
   ];
 
   useEffect(() => {
+    initGA();
+    logPageView(window.location.pathname + window.location.search);
     setTimeout(() => setIsLoading(false), 1500);
     const initialLoadStates = {};
     projects.forEach((_, index) => {
@@ -182,6 +185,16 @@ const Portfolio = () => {
     setImageLoadedStates(initialLoadStates);
   }, []);
 
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+    logPageView(`/portfolio/${section}`);
+  };
+
+  const handleProjectClick = (project) => {
+    logEvent('Project', 'Click', `${project.title} - ${project.link}`);
+  };
+
+  
   const handleImageLoad = (index) => {
     setImageLoadedStates(prev => ({
       ...prev,

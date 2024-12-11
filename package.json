@@ -4,18 +4,20 @@
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
+    "env-cmd": "^10.1.0",
     "lucide-react": "^0.468.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-ga4": "^2.1.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^4.2.4"
   },
   "homepage": "https://fdaniel-alvarez-dev.github.io/portfolio",
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:prod",
     "deploy": "gh-pages -d build",
-    "build": "react-scripts build && cp -r public/images build/images",
+    "build:prod": "env-cmd -f .env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
