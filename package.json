@@ -9,6 +9,7 @@
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1"
   },
+  "homepage": "https://fdaniel-alvarez-dev.github.io/portfolio",
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
