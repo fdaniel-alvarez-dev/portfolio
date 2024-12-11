@@ -53,7 +53,7 @@ const Portfolio = () => {
       <nav className="fixed top-0 w-full bg-white shadow-sm z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-xl font-bold text-gray-800">Portfolio.AI</div>
+            <div className="text-xl font-bold text-gray-800">Welcome to my Portfolio</div>
             <div className="flex space-x-6">
               {['About', 'Projects', 'Skills', 'Contact'].map((item) => (
                 <button
@@ -155,7 +155,7 @@ const Portfolio = () => {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8 px-6">
         <div className="container mx-auto text-center">
-          <p>© 2024 Portfolio.AI - Created with AI and ❤️</p>
+        <p>© 2024 Freddy Daniel Alvarez's Portfolio - All rights reserved</p>
         </div>
       </footer>
     </div>
