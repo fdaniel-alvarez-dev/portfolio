@@ -17,7 +17,7 @@ const Portfolio = () => {
       description: "A minimalist e-commerce MVP that proves simplicity is the ultimate sophistication...",
       tags: ["React", "Tailwind", "JavaScript"],
       // Imagen local con path relativo al dominio de GitHub Pages
-      image: "/portfolio/images/ecommerce.jpeg",
+      image: "/portfolio/images/ecommerce.jpeg?v=${Math.random()}",
       link: "https://fdaniel-alvarez-dev.github.io/ecommerce/"
     },
     {
@@ -115,7 +115,7 @@ const Portfolio = () => {
                     onLoad={() => handleImageLoad(index)}
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = '/portfolio/fallback-image.png';
+                      e.target.src = '/portfolio/images/fallback.jpg';
                       handleImageLoad(index);
                     }}
                     loading="lazy"
