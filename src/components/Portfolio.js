@@ -176,7 +176,8 @@ const Portfolio = () => {
 
   useEffect(() => {
     initGA();
-    logPageView(window.location.pathname + window.location.search);
+    logPageView(window.location.pathname);
+
     setTimeout(() => setIsLoading(false), 1500);
     const initialLoadStates = {};
     projects.forEach((_, index) => {
@@ -187,14 +188,15 @@ const Portfolio = () => {
 
   const handleSectionChange = (section) => {
     setActiveSection(section);
+    logSectionView(section);
     logPageView(`/portfolio/${section}`);
   };
-
+  
   const handleProjectClick = (project) => {
-    logEvent('Project', 'Click', `${project.title} - ${project.link}`);
+    logProjectClick(project.title, project.link);
   };
 
-  
+
   const handleImageLoad = (index) => {
     setImageLoadedStates(prev => ({
       ...prev,
@@ -214,6 +216,7 @@ const Portfolio = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105"
+              onClick={() => handleProjectClick(project)}
             >
               <div className="relative h-48 overflow-hidden">
                 {!imageLoadedStates[index] && (
@@ -300,7 +303,11 @@ const Portfolio = () => {
           <div className="flex items-center justify-between">
             <div 
               className="text-xl font-bold text-gray-800 cursor-pointer" 
-              onClick={() => setActiveSection('hero')}
+              onClick={() => {
+                setActiveSection('hero');
+                logSectionView('hero');
+                logPageView('/portfolio/hero');
+              }}
             >
               Welcome to my Portfolio
             </div>
@@ -313,7 +320,7 @@ const Portfolio = () => {
                       ? 'bg-blue-100 text-blue-800'
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
-                  onClick={() => setActiveSection(item.toLowerCase())}
+                  onClick={() => handleSectionChange(item.toLowerCase())}
                 >
                   {item}
                 </button>
