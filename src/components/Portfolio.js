@@ -17,7 +17,7 @@ const Portfolio = () => {
       description: "A minimalist e-commerce MVP that proves simplicity is the ultimate sophistication...",
       tags: ["React", "Tailwind", "JavaScript"],
       // Imagen local con path relativo al dominio de GitHub Pages
-      image: "/portfolio/images/ecommerce.jpeg?v=${Math.random()}",
+      image: "/portfolio/images/ecommerce.jpeg",
       link: "https://fdaniel-alvarez-dev.github.io/ecommerce/"
     },
     {
