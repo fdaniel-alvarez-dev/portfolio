@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Camera, Code, Layout, Palette, Send, Github, Linkedin, Mail, Phone, Database, Server } from 'lucide-react';
 
-// Componentes de sección importados del archivo anterior
 const About = () => (
   <section className="py-16 bg-white">
     <div className="container mx-auto px-6">
@@ -86,7 +85,8 @@ const Skills = () => {
         </div>
       </div>
     </section>
-);
+  );
+};
 
 const Contact = () => (
   <section className="py-16 bg-gray-50">
@@ -140,7 +140,7 @@ const Contact = () => (
 );
 
 const Portfolio = () => {
-  const [activeSection, setActiveSection] = useState('about'); // Cambiado de 'hero' a 'about'
+  const [activeSection, setActiveSection] = useState('about');
   const [isLoading, setIsLoading] = useState(true);
   const [imageLoadedStates, setImageLoadedStates] = useState({});
 
