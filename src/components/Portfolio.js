@@ -14,23 +14,24 @@ const Portfolio = () => {
   const projects = [
     {
       title: "EasyMart!, Small scale. Smart shopping",
-      description: "A minimalist e-commerce MVP that proves simplicity is the ultimate sophistication. Focused on clean code architecture and intuitive UX/UI design principles.",
+      description: "A minimalist e-commerce MVP that proves simplicity is the ultimate sophistication...",
       tags: ["React", "Tailwind", "JavaScript"],
-      image: "https://res.cloudinary.com/dz5fusuqm/image/upload/c_fill,w_800,h_400,q_auto,f_auto/v1/portfolio/ecommerce-dashboard",
+      // Imagen local con path relativo al dominio de GitHub Pages
+      image: "/portfolio/images/ecommerce.jpeg",
       link: "https://fdaniel-alvarez-dev.github.io/ecommerce/"
     },
     {
       title: "Smart Portfolio Generator",
-      description: "AI-assisted portfolio website generator for creatives",
+      description: "A minimalist Portfolio website generator for creatives MVP",
       tags: ["Next.js", "Machine Learning", "Design"],
-      image: "https://res.cloudinary.com/dz5fusuqm/image/upload/c_fill,w_800,h_400,q_auto,f_auto/v1/portfolio/portfolio-creator",
+      image: "/portfolio/images/portfolio.webp",
       link: "https://fdaniel-alvarez-dev.github.io/portfolio-generator/"
     },
     {
       title: "Design System Creator",
-      description: "Automated design system generation using AI",
+      description: "A minimalist Automated design system generation MVP",
       tags: ["Design Systems", "AI", "Components"],
-      image: "https://res.cloudinary.com/dz5fusuqm/image/upload/c_fill,w_800,h_400,q_auto,f_auto/v1/portfolio/design-system",
+      image: "/portfolio/images/system_design.webp",
       link: "https://fdaniel-alvarez-dev.github.io/design-system-creator/"
     }
   ];
